@@ -8,7 +8,7 @@ A simple web tool that checks password strength and generates secure passwords.
 
 - Password strength checker (Weak / Medium / Strong)
 - Strong password generator
-- Copy password option
+- Copy suggestion / Generate password 
 - Smart suggestions
 - Show/Hide password
 
