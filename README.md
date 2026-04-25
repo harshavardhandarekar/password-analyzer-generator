@@ -24,10 +24,10 @@ A simple web tool that checks password strength and generates secure passwords.
 
 ## 🌐 Live Demo
 
-(Add your GitHub Pages link here)
+https://harshavardhandarekar.github.io/password-analyzer-generator/
 
 ---
 
 ## 👨‍💻 Author
 
-HD
+Harshavardhan Darekar
