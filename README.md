@@ -28,6 +28,15 @@ https://harshavardhandarekar.github.io/password-analyzer-generator/
 
 ---
 
+## 📁 Project Structure
+
+```bash
+README.md
+index.html
+script.js
+style.css
+```
+
 ## 👨‍💻 Author
 
 Harshavardhan Darekar
