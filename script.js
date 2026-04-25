@@ -1,20 +1,26 @@
-let last = "";
+let lastGenerated = "";
 
-/* CHECK */
+/* CHECK PASSWORD */
 function check() {
-    let p = document.getElementById("pass").value;
-    let fill = document.getElementById("fill");
-    let status = document.getElementById("status");
-    let details = document.getElementById("details");
-    let sugBox = document.getElementById("sugBox");
+    const p = document.getElementById("pass").value;
+    const fill = document.getElementById("fill");
+    const status = document.getElementById("status");
+    const details = document.getElementById("details");
 
     let score = 0;
     let issues = [];
 
-    let lower = /[a-z]/.test(p);
-    let upper = /[A-Z]/.test(p);
-    let number = /[0-9]/.test(p);
-    let symbol = /[^A-Za-z0-9]/.test(p);
+    const lower = /[a-z]/.test(p);
+    const upper = /[A-Z]/.test(p);
+    const number = /[0-9]/.test(p);
+    const symbol = /[^A-Za-z0-9]/.test(p);
+
+    if (!p) {
+        fill.style.width = "0%";
+        status.innerText = "Start typing...";
+        details.innerText = "";
+        return;
+    }
 
     if (p.length >= 8) score++; else issues.push("8+ chars");
     if (p.length >= 13) score++; else issues.push("13+ recommended");
@@ -23,23 +29,17 @@ function check() {
     if (number) score++; else issues.push("number");
     if (symbol) score++; else issues.push("symbol");
 
-    if (!p) {
-        fill.style.width = "0%";
-        status.innerText = "Start typing...";
-        details.innerText = "";
-        sugBox.innerHTML = "";
-        return;
-    }
-
     if (score <= 3) {
         fill.style.width = "30%";
         fill.style.background = "#ef4444";
         status.innerText = "Weak ❌";
-    } else if (score <= 5) {
+    } 
+    else if (score <= 5) {
         fill.style.width = "60%";
         fill.style.background = "#f59e0b";
         status.innerText = "Medium ⚠️";
-    } else {
+    } 
+    else {
         fill.style.width = "100%";
         fill.style.background = "#22c55e";
         status.innerText = "Strong 🔐";
@@ -48,45 +48,40 @@ function check() {
     details.innerText = issues.join(" • ");
 }
 
-/* TOGGLE */
+/* TOGGLE PASSWORD */
 function toggle() {
-    let p = document.getElementById("pass");
-    p.type = (p.type === "password") ? "text" : "password";
+    const p = document.getElementById("pass");
+    p.type = p.type === "password" ? "text" : "password";
 }
 
-/* GENERATE */
+/* GENERATE PASSWORD */
 function generate() {
-    let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+";
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+";
     let pass = "";
 
     for (let i = 0; i < 16; i++) {
         pass += chars[Math.floor(Math.random() * chars.length)];
     }
 
-    last = pass;
+    lastGenerated = pass;
     document.getElementById("gen").innerText = pass;
 
     makeSuggestions(pass);
 }
 
-/* PICK */
-function pick(set) {
-    return set[Math.floor(Math.random() * set.length)];
-}
-
 /* SUGGESTIONS */
 function makeSuggestions(base) {
-    let box = document.getElementById("sugBox");
+    const box = document.getElementById("sugBox");
     box.innerHTML = "";
 
     for (let i = 0; i < 5; i++) {
         let p = base.split('').sort(() => Math.random() - 0.5).join('');
 
-        let div = document.createElement("div");
+        const div = document.createElement("div");
         div.className = "sug";
         div.innerText = p;
 
-        div.onclick = () => {
+        div.onclick = function () {
             navigator.clipboard.writeText(p);
             div.innerText = "Copied ✔";
 
@@ -99,19 +94,28 @@ function makeSuggestions(base) {
     }
 }
 
-/* COPY (FIXED) */
+/* COPY (FIXED 100%) */
 function copy() {
-    let typed = document.getElementById("pass").value;
+    const typed = document.getElementById("pass").value;
 
-    if (typed) {
-        navigator.clipboard.writeText(typed);
-        alert("Typed password copied!");
-    } else if (last) {
-        navigator.clipboard.writeText(last);
-        alert("Generated password copied!");
+    let textToCopy = "";
+
+    if (typed.length > 0) {
+        textToCopy = typed;
+    } else if (lastGenerated.length > 0) {
+        textToCopy = lastGenerated;
     } else {
         alert("Nothing to copy!");
+        return;
     }
+
+    navigator.clipboard.writeText(textToCopy)
+        .then(() => {
+            alert("Copied successfully!");
+        })
+        .catch(() => {
+            alert("Copy failed (browser issue)");
+        });
 }
 
 /* CLEAR */
