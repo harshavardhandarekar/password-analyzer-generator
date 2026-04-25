@@ -1,0 +1,129 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, Arial;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0b1220;
+  color: #e5e7eb;
+}
+
+/* BACKGROUND GLOW */
+.bg {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle at center, rgba(59,130,246,0.25), transparent 60%);
+  filter: blur(80px);
+}
+
+/* CARD */
+.card {
+  width: 520px;
+  padding: 30px;
+  border-radius: 18px;
+  background: rgba(17,24,39,0.75);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+}
+
+.title { font-size: 22px; font-weight: 600; }
+.sub { font-size: 12px; color: #9ca3af; margin-top: 4px; }
+
+.row { display: flex; gap: 10px; margin-top: 20px; }
+
+input {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #1f2937;
+  background: #0b1220;
+  color: white;
+  outline: none;
+}
+
+button {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg,#3b82f6,#2563eb);
+  color: white;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+.bar {
+  height: 10px;
+  background: #1f2937;
+  border-radius: 20px;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  width: 0%;
+  transition: 0.5s;
+}
+
+.status { margin-top: 12px; font-size: 15px; }
+.details { margin-top: 6px; font-size: 12px; color: #9ca3af; }
+
+.gen {
+  margin-top: 18px;
+  padding: 14px;
+  background: rgba(11,18,32,0.8);
+  border: 1px solid #1f2937;
+  border-radius: 14px;
+  font-size: 13px;
+  word-break: break-all;
+}
+
+.suggestions {
+  margin-top: 15px;
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.sug-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.sug {
+  padding: 6px 10px;
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.sug:hover {
+  background: #1f2937;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.small {
+  flex: 1;
+  background: #111827;
+  border: 1px solid #1f2937;
+}

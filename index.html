@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Password Analyzer & Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<div class="card">
+
+  <div class="title">🔐 Password Analyzer & Generator</div>
+  <div class="sub">Check strength + generate secure passwords</div>
+
+  <div class="row">
+    <input type="password" id="pass" placeholder="Type password..." oninput="check()">
+    <button onclick="toggle()">👁</button>
+  </div>
+
+  <div class="bar">
+    <div class="fill" id="fill"></div>
+  </div>
+
+  <div class="status" id="status">Start typing...</div>
+  <div class="details" id="details"></div>
+
+  <button style="width:100%; margin-top:18px;" onclick="generate()">
+    Generate Strong Password
+  </button>
+
+  <div class="gen" id="gen">Generated password will appear here</div>
+
+  <div class="suggestions">🔥 Click suggestions to copy:</div>
+  <div class="sug-box" id="sugBox"></div>
+
+  <div class="actions">
+    <button class="small" onclick="copy()">Copy</button>
+    <button class="small" onclick="clearAll()">Clear</button>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
