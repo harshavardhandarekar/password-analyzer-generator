@@ -40,6 +40,7 @@ style.css
 ## 👨‍💻 Author
 
 Harshavardhan Darekar
+- - - 
 
 ⭐ Support
 
