@@ -40,3 +40,7 @@ style.css
 ## 👨‍💻 Author
 
 Harshavardhan Darekar
+
+⭐ Support
+
+If you like this project, give it a ⭐ on GitHub!
